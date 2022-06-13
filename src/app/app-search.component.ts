@@ -27,10 +27,18 @@ export class SearchComponent implements OnInit {
     );
     console.log(JSON.stringify(this.algo.preguntas));
     */
+
+    this.route.paramMap.subscribe((params) => {
+      this.data = window.history.state;
+      this.preguntas = this.data.data.preguntas;
+      console.log(this.preguntas);
+    });
+    /*
     const state = this.location.getState();
     this.data = state;
     this.preguntas = this.data.preguntas;
     console.log(this.data);
     console.log(this.preguntas);
+    */
   }
 }
