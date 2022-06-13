@@ -6,8 +6,8 @@ import { Location } from '@angular/common';
   selector: 'app-search',
   template: `
   Search values are:
-  <ul *ngIf="data.preguntas">
-    <li *ngFor="let val of data.preguntas">{{val}}</li>
+  <ul *ngIf="preguntas">
+    <li *ngFor="let val of preguntas">{{val}}</li>
   </ul>
   `,
 })
@@ -16,7 +16,7 @@ export class SearchComponent implements OnInit {
     preguntas: string[];
     dni: string;
   };
-  algo;
+  preguntas: string[];
 
   constructor(private route: ActivatedRoute, private location: Location) {}
 
@@ -27,6 +27,10 @@ export class SearchComponent implements OnInit {
     );
     console.log(JSON.stringify(this.algo.preguntas));
     */
-    console.log(this.location.getState());
+    const state = this.location.getState();
+    this.data = state;
+    this.preguntas = this.data.preguntas;
+    console.log(this.data);
+    console.log(this.preguntas);
   }
 }
